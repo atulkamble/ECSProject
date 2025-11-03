@@ -1,0 +1,31 @@
+{
+  "serviceName": "demo-service",
+  "taskDefinition": "ecs-demo-app",
+  "cluster": "demo-cluster",
+  "launchType": "FARGATE",
+  "desiredCount": 2,
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": [
+        "subnet-xxxxx",
+        "subnet-yyyyy"
+      ],
+      "securityGroups": [
+        "sg-xxxxx"
+      ],
+      "assignPublicIp": "ENABLED"
+    }
+  },
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100,
+    "deploymentCircuitBreaker": {
+      "enable": true,
+      "rollback": true
+    }
+  },
+  "healthCheckGracePeriodSeconds": 60,
+  "schedulingStrategy": "REPLICA",
+  "enableECSManagedTags": true,
+  "propagateTags": "SERVICE"
+}
